@@ -1,1 +1,1 @@
-# sl-sidebar-widgets
+# Sidebar Widgets for SustainLife.org
