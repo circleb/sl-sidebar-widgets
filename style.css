@@ -20,3 +20,9 @@
     font-family: FontAwesome;
     float:left;
 }
+.widget .slsw-teacher {
+    text-align: center;
+}
+.widget .slsw-teacher-title {
+    line-height: 2.5;
+}

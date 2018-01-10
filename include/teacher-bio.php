@@ -26,9 +26,9 @@ class SLSW_Teacher_Bio extends WP_Widget {
 		if ($post->post_type != 'product') {
 			return;
 		}
-		if (get_field('product_type') != 'class') { 
+		if (get_field('product_type') != 'class') {
 			return;
-		} 
+		}
 
 		$post_id = $post->ID;
 		$teacher_posts = get_field('class_teachers');
@@ -48,10 +48,15 @@ class SLSW_Teacher_Bio extends WP_Widget {
 		foreach ($teacher_posts as $t) {
 			$t_link = get_the_permalink($t->ID);
 
-			echo '<div style="text-align: center; padding-bottom: 15px !important;" class="slsw-teacher">';
-			printf( '<a href="%s">%s</a>', $t_link, get_the_post_thumbnail( $t ) );
-			printf( '<a href="%s">%s</a>', $t_link, $t->post_title );
+			echo '<div class="slsw-teacher">';
+			printf( '<a class="slsw-teacher-thumb" data-open="teacher%s">%s</a>', $t->ID, get_the_post_thumbnail( $t ) );
+			printf( '<a class="slsw-teacher-title" data-open="teacher%s">%s</a>', $t->ID, $t->post_title );
 			echo '</div>';
+			printf( '<div class="reveal" id="teacher%s" data-reveal>', $t->ID );
+			printf( '<h1>%s</h1>', $t->post_title );
+			printf( '<p>%s</p>', $t->post_content );
+			echo '<button class="close-button" data-close aria-label="Close modal" type="button"><span aria-hidden="true">&times;</span></button>
+			</div>';
 		}
 		echo '</article>';
 	}
